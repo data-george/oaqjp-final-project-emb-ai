@@ -7,7 +7,7 @@ def emotion_detector(text_to_analyse):  # Define a function named emotion_detect
     header = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}  # Set the headers required for the API request
     response = requests.post(url, json = myobj, headers=header)  # Send a POST request to the API with the text and headers
     # Get the emotion scores
-    emotions = json.loads(response.text["emotion"])
+    emotions = json.loads(response)["emotion"]
     # Get each emotion category
     anger_score = emotions["anger"]
     disgust_score = emotions["disgust"]
