@@ -10,7 +10,7 @@ class TestEmotionDetector(unittest.TestCase):
     
         # Test case for anger
         result_2 = emotion_detector('I am really mad about this')
-        self.assertEqual(result_2['dominant_emotion'], 'SENT_NEGATIVE')
+        self.assertEqual(result_2['dominant_emotion'], 'anger')
     
         # Test case for disgust
         result_3 = emotion_detector('I feel disgusted just hearing about this')
