@@ -1,5 +1,4 @@
 import requests  # Import the requests library to handle HTTP requests
-import json # Import the json library to convert the response text
 
 def emotion_detector(text_to_analyse):  # Define a function named emotion_detector that takes a string input (text_to_analyse)
     url = 'https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict'  # URL of the emotion detection service
@@ -7,7 +6,7 @@ def emotion_detector(text_to_analyse):  # Define a function named emotion_detect
     header = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}  # Set the headers required for the API request
     response = requests.post(url, json = myobj, headers=header)  # Send a POST request to the API with the text and headers
     # Get the emotion scores
-    emotions = json.loads(response)["emotion"]
+    emotions = response.json()["emotion"]
     # Get each emotion category
     anger_score = emotions["anger"]
     disgust_score = emotions["disgust"]
