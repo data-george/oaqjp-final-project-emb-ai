@@ -22,7 +22,7 @@ class TestEmotionDetector(unittest.TestCase):
 
         # Test case for fear
         result_5 = emotion_detector('I really afraid that this will happen')
-        self.assertEqual(result_5['dominant_emotion'], 'disgust')
+        self.assertEqual(result_5['dominant_emotion'], 'fear')
 
 
 unittest.main()
