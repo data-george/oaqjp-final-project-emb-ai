@@ -6,12 +6,13 @@
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
-app = Flask("Emotion Detector", 
+app = Flask("Emotion Detector",
             template_folder='EmotionDetection/templates',
             static_folder='EmotionDetection/static')
 
 @app.route("/emotionDetector")
 def sent_analyzer():
+    """"runs the emotion detector"""
     # Retrieve the text to analyze from the request arguments
     text_to_analyze = request.args.get('textToAnalyze')
 
@@ -26,19 +27,19 @@ def sent_analyzer():
         return "Invalid text! Please try again!."
 
     # If dominant emotion is not None return a formatted string with the emotion label and score
-    else:
-
-        anger = response['anger']
-        disgust = response['disgust']
-        fear = response['fear']
-        joy = response['joy']
-        sadness = response['sadness']
-        
-
-        return f"For the given statement, the system response is 'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and 'sadness': {sadness}. The dominant emotion is {dominant_emotion}."
+    anger = response['anger']
+    disgust = response['disgust']
+    fear = response['fear']
+    joy = response['joy']
+    sadness = response['sadness']
+    return f"""For the given statement, the system response is
+               'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 
+               'joy': {joy} and 'sadness': {sadness}. The dominant emotion
+                is {dominant_emotion}."""
 
 @app.route("/")
 def render_index_page():
+    """renders the html template"""
     return render_template('index.html')
 
 if __name__ == "__main__":
