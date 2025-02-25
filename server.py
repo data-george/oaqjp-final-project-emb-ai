@@ -26,11 +26,17 @@ def sent_analyzer():
     sadness = response['sadness']
     dominant_emotion = response['dominant_emotion']
 
-    # Check if the label is None, indicating an error or invalid input
-    if dominant_emotion is None:
-        return "Invalid input! Try again."
+    # Check if status code is 400 return values for all keys as None
+    if response.status_code == 400:
+        anger = None
+        disgust = None
+        fear = None
+        joy = None
+        sadness = None
+        dominant_emotion = None   
+    
     else:
-        # Return a formatted string with the sentiment label and score
+        # Return a formatted string with the emotion label and score
         return f"For the given statement, the system response is 'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and 'sadness': {sadness}. The dominant emotion is {dominant_emotion}."
 
 @app.route("/")
