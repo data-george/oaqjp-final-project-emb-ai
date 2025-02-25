@@ -26,6 +26,10 @@ def sent_analyzer():
     sadness = response['sadness']
     dominant_emotion = response['dominant_emotion']
 
+    # Check if dominant emotion is None, if so display error message
+    if dominant_emotion is None:
+        return "Invalid text! Please try again!."
+
     # Check if status code is 400 return values for all keys as None
     if response.status_code == 400:
         anger = None
