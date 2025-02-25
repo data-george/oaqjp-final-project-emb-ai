@@ -29,7 +29,7 @@ def sent_analyzer():
         return "Invalid input! Try again."
     else:
         # Return a formatted string with the sentiment label and score
-        return "For the given statement, the system response is 'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and 'sadness': {sadness}. The dominant emotion is {dominant_response}."
+        return f"For the given statement, the system response is 'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and 'sadness': {sadness}. The dominant emotion is {dominant_response}."
 
 @app.route("/")
 def render_index_page():
