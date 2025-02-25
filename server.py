@@ -18,6 +18,9 @@ def sent_analyzer():
     # Pass the text to the emotion_detector function and store the response
     response = emotion_detector(text_to_analyze)
 
+    # Get dominant emotion
+    dominant_emotion = response['dominant_emotion']
+
     # Check if dominant emotion is None, if so display error message
     if dominant_emotion is None:
         return "Invalid text! Please try again!."
@@ -30,8 +33,8 @@ def sent_analyzer():
         fear = response['fear']
         joy = response['joy']
         sadness = response['sadness']
-        dominant_emotion = response['dominant_emotion']
         
+
         return f"For the given statement, the system response is 'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy} and 'sadness': {sadness}. The dominant emotion is {dominant_emotion}."
 
 @app.route("/")
